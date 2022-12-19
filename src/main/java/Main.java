@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,6 +28,8 @@ public class Main {
             }
         }
 
-        System.out.println(numbersList.size());
+        Map<Integer, Integer> numberCount = numbersList.stream()
+                .collect(Collectors.toMap(i -> i, i -> 1, (o, n) -> o + 1));
+        System.out.println(numberCount);
     }
 }
